@@ -1,113 +1,59 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+  <div>
+    <!-- <img v-bind:src="imgSrc" alt=""   preload="auto">
+    <div>{{this.time}}</div> -->
+    <video width="100%" height='100%' muted ref="video1" id='video1' autoplay="autoplay" oncanplaythrough="myFunction">
+      <source src="http://stage.tigerobo.com/images/text_01.MP4" type="video/mp4">
+    </video>
   </div>
 </template>
 
+
 <script>
-export default {
-  name: 'HelloWorld',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+  export default {
+    name: 'hell',
+    data() {
+      return {
+        time: 0,
+        imgSrc: "../../static/动画-text/dh_1_00000.png",
+        all: 11
+      }
+    },
+    methods: {
+
+    },
+    mounted() {
+      var x = this.$refs.video1
+      setInterval(() => {
+        console.log(x.readyState)
+        x.oncanplay = function () {
+          console.log(1)
+        }
+      }, 100)
+
+
+      setInterval(() => {
+        if (this.time == 11) {
+          this.time = 0
+        } else {
+          this.time++
+        }
+        this.imgSrc = "../../static/动画-text/dh_1_0000" + this.time + ".png"
+      }, 100);
+
+
+  
+
+
+
+    },
+
+
   }
-}
+
+
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+
 </style>
